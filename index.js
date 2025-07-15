@@ -1,13 +1,13 @@
 import express from 'express'
 const app = express();
 import { employees } from './routes/employeeRoutes.js';
-import { departments } from './routes/departmentRoutes.js';
-import { tasks } from './routes/taskRoutes.js';
+//import { departments } from './routes/departmentRoutes.js';
+//import { tasks } from './routes/taskRoutes.js';
 
 app.use(express.json());
 app.use('/api', employees)
-app.use('/api', departments);
-app.use('/api', tasks);
+//app.use('/api', departments);
+//app.use('/api', tasks);
 
 const port = 4000;
 

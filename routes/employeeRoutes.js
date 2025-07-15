@@ -1,7 +1,9 @@
-import {pool} from '../db/cn.js';
+import express from "express";
+import { postEmployees, getEmployees, putEmployees, deleteEmployees } from "../controllers/EmployeesController.js";
 
-export const getEmployees = async (req, res) => {
+export const employees = express.Router();
 
-const result = await pool.query('SELECT * FROM hospital.employees');
-  return res.json(result.rows);
-}
+employees.get(`employees`, getEmployees);
+employees.post(`employees`, postEmployees);
+employees.put(`employees/:employees_id`, putEmployees);
+employees.delete(`employees/:employees_id`, deleteEmployees);
