@@ -1,7 +1,7 @@
 import { pool } from "../db/cn.js";
 
 export const getDepartments = async (req, res) => {
-  const result = await pool.query("SELECT * FROM hospital.departments");
+  const result = await pool.query("SELECT * FROM task_tracker.departments");
   return res.json(result.rows);
 };
 
