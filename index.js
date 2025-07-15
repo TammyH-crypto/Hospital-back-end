@@ -1,24 +1,14 @@
 import express from 'express'
 const app = express();
-
-
+import { employees } from './routes/employeeRoutes.js';
+import { departments } from './routes/departmentRoutes.js';
+import { tasks } from './routes/taskRoutes.js';
 
 app.use(express.json());
+app.use('/api', employees)
+app.use('/api', departments);
+app.use('/api', tasks);
 
-app.get('/employees', )
-
-app.post("/employees", async (req, res) => {}
-)
-
-  app.put("/employees/:employee_id", async (req, res) => {})
-
- 
-  app.delete("/employees/:employee_id", async (req, res) => {
-   
-  });
-
-   
-    
 const port = 4000;
 
 app.listen(port, () => {

@@ -12,5 +12,5 @@ const taskRoutes = require("./routes/tasks");
 app.use("/employees", employeeRoutes);
 app.use("/tasks", taskRoutes);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => console.log(`Server running on port ${4000}`));
