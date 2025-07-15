@@ -5,7 +5,7 @@ export const gettasks = async (req, res) => {
   return res.json(result.rows);
 };
 
-export const posttasksgettasks = async (req, res) => {
+export const posttasks = async (req, res) => {
   const body = req.body;
   const sql = `INSERT INTO task_tracker.tasks(name, location) values ($1, $2)`;
   const parameters = [body.name, body.location];
@@ -13,7 +13,7 @@ export const posttasksgettasks = async (req, res) => {
   return res.json(body);
 };
 
-export const puttasksgettasks = async (req, res) => {
+export const puttasks = async (req, res) => {
   const department_id = req.params.department_id;
   const body = req.body;
   const sql = `UPDATE task_tracker.tasks SET name = $1, location = $2 WHERE department_id = $3`;

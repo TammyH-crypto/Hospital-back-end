@@ -1,5 +1,10 @@
 import express from "express";
-import { postEmployees, getEmployees, putEmployees, deleteEmployees } from "../controllers/EmployeesController.js";
+import {
+  postEmployees,
+  getEmployees,
+  putEmployees,
+  deleteEmployees,
+} from "../controllers/EmployeesController.js";
 
 export const employees = express.Router();
 
