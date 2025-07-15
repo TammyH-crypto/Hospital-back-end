@@ -1,4 +1,6 @@
 import { pool } from "./db/cn.js";
+import express from 'express';
+export const employees = express.Router();
 
 const postEmployees = async (req, res) => {
   const body = req.body;
