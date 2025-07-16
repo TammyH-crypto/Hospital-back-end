@@ -9,8 +9,8 @@ export const gettasks = async (req, res) => {
 
 export const posttasks = async (req, res) => {
   const body = req.body;
-  const sql = `INSERT INTO task_tracker.tasks(name, location) values ($1, $2)`;
-  const parameters = [body.name, body.location];
+  const sql = `INSERT INTO task_tracker.tasks(description, status, employee_id) values ($1, $2, $3, )`;
+  const parameters = [body.description, body.status, body.employee_id];
   const result = await pool.query(sql, parameters);
   return res.json(body);
 };
@@ -18,8 +18,8 @@ export const posttasks = async (req, res) => {
 export const puttasks = async (req, res) => {
   const task_id = req.params.task_id;
   const body = req.body;
-  const sql = `UPDATE task_tracker.tasks SET name = $1, location = $2 WHERE department_id = $3`;
-  const parameters = [body.name, body.location, department_id];
+  const sql = `UPDATE task_tracker.tasks SET description = $1, status = $2, WHERE employee_id = $3`;
+  const parameters = [body.description, body.status, employee_id];
   const result = await pool.query(sql, parameters);
   return res.json(body);
 };
