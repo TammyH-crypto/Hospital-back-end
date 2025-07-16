@@ -1,14 +1,13 @@
 import express from "express";
 import {
-  gettasks,
-  posttasks,
-  puttasks,
+  gettask,
+  posttask,
+  puttask,
 } from "../controllers/tasksController.js";
 
 export const tasks = express.Router();
 
-tasks.get(`/tasks`, gettasks);
-tasks.post(`/tasks`, posttasks);
-tasks.put(`/tasks/:task_id`, puttasks);
+tasks.get(`/task `, gettask);
+tasks.post(`/task`, posttask);
 
 
