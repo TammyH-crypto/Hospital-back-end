@@ -2,7 +2,9 @@ import express from "express";
 const app = express();
 import { employees } from "./routes/employeeRoutes.js";
 import { tasks } from "./routes/taskRoutes.js";
+import cors from "cors";
 
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use("/api", employees);
 app.use("/api", tasks);
