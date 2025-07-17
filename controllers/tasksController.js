@@ -21,7 +21,7 @@ export const putTasks = async (req, res) => {
   const sql = `UPDATE task_tracker.tasks SET description = $1, status = $2 WHERE task_id = $3`;
   const parameters = [body.description, body.status, employee_id];
   const result = await pool.query(sql, parameters);
-  return res.json(message = "Task updated successfully");
+  return res.json((message = "Task updated successfully"));
 };
 
 export const deleteTasks = async (req, res) => {
@@ -30,4 +30,4 @@ export const deleteTasks = async (req, res) => {
   const parameters = [task_id];
   const result = await pool.query(sql, parameters);
   return res.json({ message: "Task deleted successfully" });
-}
+};
