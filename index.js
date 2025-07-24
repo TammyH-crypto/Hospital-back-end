@@ -24,10 +24,10 @@ app.use("/api", tasks);
 if (enviroment === "production") {
   const options = {
     key: fs.readFileSync(
-      "/etc/letsencrypt/live/ssl-test-2.codex-p4-2025.click/privkey.pem"
+      "/etc/letsencrypt/live/tammy-backend.codex-p4-2025.click/privkey.pem"
     ),
     cert: fs.readFileSync(
-      "/etc/letsencrypt/live/ssl-test-2.codex-p4-2025.click/fullchain.pem"
+      "/etc/letsencrypt/live/tammy-backend.codex-p4-2025.click/fullchain.pem"
     ),
   };
 
