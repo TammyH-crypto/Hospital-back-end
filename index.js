@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 dotenv.config();
 import { employees } from "./routes/employeeRoutes.js";
 import { tasks } from "./routes/taskRoutes.js";
-import { phones } from "./routes/phoneRoutes.js";
 import cors from "cors";
 import fs from "fs";
 import https from "https";
@@ -20,7 +19,7 @@ app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use("/api", employees);
 app.use("/api", tasks);
-app.use("/api", phones);
+
 
 if (enviroment === "production") {
   const options = {
