@@ -4,7 +4,7 @@ export const employees = express.Router();
 
 export const postEmployees = async (req, res) => {
   const body = req.body;
-  const sql = `INSERT INTO task_tracker.employees(name, department, role) values (1$, 2$, 3$)`;
+  const sql = `INSERT INTO task_tracker.employees(name, department, role, phone) values (1$, 2$, 3$)`;
   const parameters = [body.name, department, role];
   const result = await pool.query(sql, parameters);
   return res.json(body);
@@ -15,6 +15,12 @@ export const getEmployees = async (req, res) => {
   return res.json(result.rows);
 };
 
+export const getEmployeesId = async (req, res) => {
+  const employee_id = req.params.employee_id;
+  const sql = `SELECT * FROM task_tracker.employees WHERE employee_id = $1`;
+  const result = await pool.query(sql, [employee_id]);
+  return res.json(result.rows);
+};
 export const putEmployees = async (req, res) => {
   const employee_id = req.params.patient_id;
   const body = req.body;
