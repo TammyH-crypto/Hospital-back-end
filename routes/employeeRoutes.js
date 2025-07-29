@@ -12,5 +12,5 @@ export const employees = express.Router();
 employees.get(`/employees/:employee_id`, getEmployeesId);
 employees.get(`/employees`, getEmployees);
 employees.post(`/employees`, postEmployees);
-employees.put(`/employees/:employees_id`, putEmployees);
-employees.delete(`/employees/:employees_id`, deleteEmployees);
+employees.put(`/employees/:employee_id`, putEmployees);
+employees.delete(`/employees/:employee_id`, deleteEmployees);
