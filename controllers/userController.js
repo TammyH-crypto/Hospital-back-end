@@ -1,11 +1,11 @@
 import { pool } from "../db/cn.js";
 
 export const postUser = async (req, res) => {
-  const sql = `insert into users (username, password) values ($1, $2)`;
+  const sql = `insert into task_tracker.users ( email, username, password, name) values ($1, $2, $3, $4)`;
 
-  const { username, password } = req.body;
+  const { email, username, password , name } = req.body;
 
-  const parameter = [username, password];
+  const parameter = [email, username, password , name];
 
   const result = await pool.query(sql, parameter);
 
@@ -13,7 +13,7 @@ export const postUser = async (req, res) => {
 };
 
 export const auth = async (req, res) => {
-   const sql = `select email, first name from users where email = $1 and password = $2`;
+   const sql = `select email, first name from task_tracker.users where email = $1 and password = $2`;
 
    const { email, password } = req.body;
 
