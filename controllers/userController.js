@@ -11,3 +11,13 @@ export const postUser = async (req, res) => {
 
   return res.json({ message: "New user created successfully" });
 };
+
+const auth = async (req, res) => {
+   const sql = `select email, first name from users where email = $1 and password = $2`;
+
+   const { email, password } = req.body;
+
+   const result = await pool.query(sql, [email, password]);
+
+   
+}
