@@ -4,7 +4,7 @@ export const employees = express.Router();
 
 export const postEmployees = async (req, res) => {
   const body = req.body;
-  const sql = `INSERT INTO task_tracker.employees(name, department, role, phone) values (1$, 2$, 3$)`;
+  const sql = `INSERT INTO task_tracker.employees(name, department, role) values ($1, $2, $3)`;
   const parameters = [body.name, body.department, body.role];
   const result = await pool.query(sql, parameters);
   return res.json(body);
