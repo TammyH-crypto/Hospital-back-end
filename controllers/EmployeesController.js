@@ -15,6 +15,12 @@ export const getEmployees = async (req, res) => {
   return res.json(result.rows);
 };
 
+export const getTasksByEmployeeId = async (req, res) => {
+  const employee_id = req.params.employee_id;
+  const sql = `SELECT * FROM task_tracker.tasks WHERE employee_id = $1`;
+  const result = await pool.query(sql, [employee_id]);
+  return res.json(result.rows);
+};
 export const getEmployeesId = async (req, res) => {
   const employee_id = req.params.employee_id;
   const sql = `SELECT * FROM task_tracker.employees WHERE employee_id = $1`;
