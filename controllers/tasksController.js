@@ -7,6 +7,7 @@ export const getTasks = async (req, res) => {
   return res.json(result.rows);
 };
 
+
 export const postTasks = async (req, res) => {
   const body = req.body;
   const sql = `INSERT INTO task_tracker.tasks(description, status, employee_id) values ($1, $2, $3 )`;
