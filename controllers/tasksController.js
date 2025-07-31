@@ -7,6 +7,13 @@ export const getTasks = async (req, res) => {
   return res.json(result.rows);
 };
 
+export const getTasksByEmployeeId = async (req, res) => {
+  const employee_id = req.params.employee_id;
+  const sql = `SELECT * FROM task_tracker.tasks WHERE employee_id = $1`;
+  const result = await pool.query(sql, [employee_id]);
+  return res.json(result.rows);
+};
+
 export const postTasks = async (req, res) => {
   const body = req.body;
   const sql = `INSERT INTO task_tracker.tasks(description, status, employee_id) values ($1, $2, $3 )`;
