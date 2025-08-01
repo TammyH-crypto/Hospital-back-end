@@ -1,11 +1,12 @@
 import { pool } from "../db/cn.js";
+import jwt from "jsonwebtoken";
 
 export const postUser = async (req, res) => {
-  const sql = `insert into users (username, password) values ($1, $2)`;
+  const sql = `insert into task-tracker.users (email, username, password, name) values ($1, $2, $3, $4)`;
 
-  const { username, password } = req.body;
+  const { email, username, password, name } = req.body;
 
-  const parameter = [username, password];
+  const parameter = [email, username, password, name];
 
   const result = await pool.query(sql, parameter);
 
@@ -13,16 +14,21 @@ export const postUser = async (req, res) => {
 };
 
 export const auth = async (req, res) => {
-   const sql = `select email, first name from users where email = $1 and password = $2`;
+   const sql = `select email, first name from task-tracker.users where email = $1 and password = $2`;
 
   const { email, password } = req.body;
 
   const result = await pool.query(sql, [email, password]);
 
-    if (result.rowsCount = 1) {
-        return res.json(result.rows[0]);
+    if (result.rowCount === 1) {
+
+        const payload = res.json(result.rows[0]);
+        const secret = "goodday"
+        const token = jwt.sign(payload, secret, { expiresIn: "1h" });
+
+        return res.json({token: token})
     }else{
-        return res.status(401).json({ message: "Invalid email or password" });
+        return res.status(400).json({ message: "Auth Failed" });
     }
   
 };
