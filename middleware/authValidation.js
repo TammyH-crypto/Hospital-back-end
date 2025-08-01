@@ -1,11 +1,11 @@
 import jwt from "jsonwebtoken";
-const secret = "";
+const secret = "goodday";
 
 export const validateToken = (req, res, next) => {
-  const token = req.headers.authorization;
-  const newToken = token.replace("Bearer ", "");
-
   try {
+    const token = req.headers.authorization;
+    const newToken = token.replace("Bearer ", "");
+
     const result = jwt.verify(newToken, secret);
     next();
   } catch (err) {
