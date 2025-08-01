@@ -23,9 +23,9 @@ export const auth = async (req, res) => {
   if (result.rowCount === 1) {
     const payload = result.rows[0];
     const secret = "goodday";
-    const token = jwt.sign(payload, secret, { expiresIn: "1h" });
+    const token = await jwt.sign(payload, secret, { expiresIn: "1h" });
 
-    return res.json({ token: token });
+    return res.json({ token });
   } else {
     return res.status(400).json({ message: "Auth Failed" });
   }
